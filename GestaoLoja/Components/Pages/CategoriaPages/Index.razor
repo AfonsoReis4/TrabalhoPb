@@ -1,0 +1,69 @@
+﻿@using GestaoLoja.Components.Layout
+@layout AdminLayout
+
+@page "/categoria"
+
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.EntityFrameworkCore
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using GestaoLoja.Entities
+@using GestaoLoja.Data
+@implements IAsyncDisposable
+@inject IDbContextFactory<GestaoLoja.Data.ApplicationDbContext> DbFactory
+@*
+ sempre q tiver isto para aceder à pagina temos q estar autenticados
+ e neste caso so com role admin é q da para aceder
+ *@
+@attribute [Authorize(Roles = "Cliente")]
+
+
+<PageTitle>Index</PageTitle>
+
+<h1>Index</h1>
+
+<p>
+    <a href="categoria/create">Create New</a>
+</p>
+
+<QuickGrid Class="table" Items="context.Categorias">
+    <PropertyColumn Property="categoria => categoria.Nome" />
+    <PropertyColumn Property="categoria => categoria.Ordem" />
+    <PropertyColumn Property="categoria => categoria.UrlImagem" /><NavMenu />
+
+    @*Substituir a imagem por um preview
+    <PropertyColumn Property="categoria => categoria.Imagem" />*@
+
+     <TemplateColumn Context="categoria">
+         @if(categoria.Imagem is not null && categoria.Imagem.Length > 0){
+         <img src="@($"data:image/png;base64, {Convert.ToBase64String(categoria.Imagem)}")"
+           alt="@categoria.Nome" style="max-width: 100px; max-height: 100px" />
+           }
+           else
+           {
+             <span>No Image</span>
+           }
+     </TemplateColumn>
+
+    <TemplateColumn Context="categoria">
+        <a href="@($"categoria/edit?id={categoria.Id}")">
+            <i class="bi bi-pencil-square"></i>    
+        </a> |
+        <a href="@($"categoria/details?id={categoria.Id}")">
+            <i class="bi bi-eye-fill"></i>
+        </a> |
+        <a href="@($"categoria/delete?id={categoria.Id}")">
+            <i class="bi bi-trash-fill"></i>
+        </a>
+    </TemplateColumn>
+</QuickGrid>
+
+@code {
+    private ApplicationDbContext context = default!;
+
+    protected override void OnInitialized()
+    {
+        context = DbFactory.CreateDbContext();
+    }
+
+    public async ValueTask DisposeAsync() => await context.DisposeAsync();
+}

@@ -1,0 +1,19 @@
+﻿@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+
+@layout MainLayout
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles="Admin")]
+
+<h3>Layout dos admins</h3>
+<div class="page">
+	@Body
+	<hr />
+	@xpto
+
+</div>
+
+
+@code {
+	string xpto = "Isto é um teste";
+}
