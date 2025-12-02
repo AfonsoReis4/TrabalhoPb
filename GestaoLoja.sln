@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestaoLoja", "GestaoLoja\GestaoLoja.csproj", "{C855DD61-C653-4CB8-809E-DC040D45C455}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RESTFulAPI", "RestfulAPI\RESTFulAPI.csproj", "{F7A449BF-D291-4C24-B1B9-52B511CCA162}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C855DD61-C653-4CB8-809E-DC040D45C455}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C855DD61-C653-4CB8-809E-DC040D45C455}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C855DD61-C653-4CB8-809E-DC040D45C455}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7A449BF-D291-4C24-B1B9-52B511CCA162}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7A449BF-D291-4C24-B1B9-52B511CCA162}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7A449BF-D291-4C24-B1B9-52B511CCA162}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7A449BF-D291-4C24-B1B9-52B511CCA162}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
