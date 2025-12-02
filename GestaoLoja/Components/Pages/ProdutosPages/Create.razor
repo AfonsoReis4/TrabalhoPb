@@ -121,7 +121,5 @@
         context.Produtos.Add(Produtos);
         await context.SaveChangesAsync();
         NavigationManager.NavigateTo("/produtos");
-		await Task.CompletedTask;
-        //teste commit
     }
 }
